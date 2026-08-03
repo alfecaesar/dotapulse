@@ -489,7 +489,7 @@ function PlayerTable({
           </thead>
           <tbody>
             {players.map((p: MatchPlayer, i: number) => {
-              const hero = heroMap.get(p.hero_id);
+              const hero = heroMap.get(p.id);
               return (
                 <PlayerRow
                   key={`${p.player_slot}-${i}`}

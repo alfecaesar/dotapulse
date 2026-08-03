@@ -172,7 +172,7 @@ export default function DashboardPage() {
           ) : (
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
               {topHeroes.map((hero: HeroStat, i: number) => (
-                <Link key={hero.hero_id} href={`/heroes/${hero.id}`}>
+                <Link key={hero.id} href={`/heroes/${hero.id}`}>
                   <HeroCard
                     hero={hero}
                     index={i}

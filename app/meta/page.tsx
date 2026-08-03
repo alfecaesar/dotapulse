@@ -70,7 +70,7 @@ export default function MetaPage() {
     name: h.localized_name ?? h.name,
     winRate: h._wr * 100,
     pickRate: h._pr,
-    hero_id: h.hero_id,
+    id: h.id,
     attr: h.primary_attr,
   }));
 
