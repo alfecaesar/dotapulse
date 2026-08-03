@@ -1,0 +1,245 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --background-secondary: 210 16% 94%;
+    --foreground: 215 28% 17%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 28% 17%;
+
+    --primary: 152 56% 40%;
+    --primary-foreground: 150 40% 98%;
+    --primary-glow: 152 60% 45%;
+
+    --secondary: 210 16% 90%;
+    --secondary-foreground: 215 28% 17%;
+
+    --muted: 210 16% 93%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 152 50% 94%;
+    --accent-foreground: 152 56% 30%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 100% 10%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 152 56% 40%;
+
+    --chart-1: 152 56% 40%;
+    --chart-2: 199 89% 48%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    --radius: 0.75rem;
+
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 215 28% 17% / 0.08;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --background-secondary: 222 40% 8%;
+    --foreground: 210 20% 96%;
+
+    --card: 222 40% 8%;
+    --card-foreground: 210 20% 96%;
+
+    --popover: 222 44% 7%;
+    --popover-foreground: 210 20% 96%;
+
+    --primary: 152 60% 45%;
+    --primary-foreground: 150 40% 6%;
+    --primary-glow: 152 70% 55%;
+
+    --secondary: 222 30% 12%;
+    --secondary-foreground: 210 20% 96%;
+
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 16% 60%;
+
+    --accent: 152 40% 16%;
+    --accent-foreground: 152 60% 70%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 100% 10%;
+
+    --border: 222 30% 16%;
+    --input: 222 30% 16%;
+    --ring: 152 60% 45%;
+
+    --chart-1: 152 60% 45%;
+    --chart-2: 199 89% 48%;
+    --chart-3: 38 92% 55%;
+    --chart-4: 280 65% 65%;
+    --chart-5: 340 75% 60%;
+
+    --glass-bg: 222 40% 8% / 0.6;
+    --glass-border: 210 20% 96% / 0.08;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-muted-foreground/30;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer components {
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid hsl(var(--glass-border));
+  }
+  .glass-strong {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid hsl(var(--glass-border));
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .bg-radial-fade {
+    background: radial-gradient(
+      ellipse 80% 60% at 50% 0%,
+      hsl(var(--primary) / 0.12),
+      transparent 70%
+    );
+  }
+  .bg-gaming-radial {
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 0%, hsl(var(--primary) / 0.08), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 80% 10%, hsl(var(--chart-2) / 0.06), transparent 60%),
+      radial-gradient(ellipse 40% 30% at 50% 100%, hsl(var(--chart-5) / 0.04), transparent 60%);
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5;
+  }
+  .card-glow {
+    @apply transition-all duration-300;
+  }
+  .card-glow:hover {
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow:
+      0 0 0 1px hsl(var(--primary) / 0.2),
+      0 4px 24px hsl(var(--primary) / 0.12),
+      0 0 40px hsl(var(--primary) / 0.08);
+    transform: translateY(-2px);
+  }
+  .neon-text {
+    text-shadow:
+      0 0 8px hsl(var(--primary) / 0.5),
+      0 0 16px hsl(var(--primary) / 0.3);
+  }
+  .neon-border {
+    box-shadow:
+      0 0 0 1px hsl(var(--primary) / 0.3),
+      0 0 12px hsl(var(--primary) / 0.2),
+      inset 0 0 12px hsl(var(--primary) / 0.05);
+  }
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--muted-foreground) / 0.15) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@layer utilities {
+  .animate-shimmer {
+    animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
+    50% { box-shadow: 0 0 40px hsl(var(--primary) / 0.5); }
+  }
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
